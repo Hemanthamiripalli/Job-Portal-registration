@@ -1,6 +1,8 @@
 package com.example.service;
 
+import com.example.dtos.UserDto;
+
 public interface UserService {
 	
-	public void saveUser();
+	public String saveUser(UserDto users);
 }

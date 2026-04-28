@@ -1,23 +1,13 @@
-package com.example.models;
+package com.example.dtos;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+public class UserDto {
 
-@Entity
-@Table(name = "users")
-public class Users {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column
+
 	private String email;
-	@Column
+
 	private String password;
-	@Column
+
 	private String role;
 
 	public Long getId() {
