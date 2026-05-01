@@ -39,12 +39,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<UserResponse> getAllUsers() {
-		
 		List<UserResponse> res = new ArrayList<UserResponse>();
-		
+
 		List<Users> list = repo.findAll();
-		for(Users u : list)
-		{
+		for (Users u : list) {
 			UserResponse user = new UserResponse();
 			user.setId(u.getId());
 			user.setEmail(u.getEmail());
@@ -52,5 +50,22 @@ public class UserServiceImpl implements UserService {
 			res.add(user);
 		}
 		return res;
+	}
+
+	@Override
+	public String userLogin(UserDto dto) {
+
+		if (dto != null) {
+			Users user = repo.findByEmail(dto.getEmail());
+			boolean match = passwordEncoder.matches(dto.getPassword(), user.getPassword());
+			if (match) {
+				return Messages.SUCCESS;
+			} else {
+				return Messages.FAILED;
+			}
+
+		} else {
+			return Messages.NOT_FOUND;
+		}
 	}
 }

@@ -7,5 +7,6 @@ public final class Messages {
 	public static final String CREATED = "User created Successfully";
 	public static final String USER_EXISTS = "User Already Exists";
 	public static final String USERS_FETCHED = "Users Fetched Successfully";
-
+	public static final String NOT_FOUND = "Not Found";
+	public static final String LOGIN_SUCCESS = "Login Success";
 }

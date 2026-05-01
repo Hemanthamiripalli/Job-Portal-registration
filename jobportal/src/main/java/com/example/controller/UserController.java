@@ -60,4 +60,21 @@ public class UserController {
 
 	}
 
+	@PostMapping("/login")
+	public ResponseEntity<ResponseDto> userLogin(@RequestBody UserDto dto) {
+		ResponseDto res = new ResponseDto();
+		String message = userService.userLogin(dto);
+		if (message.equals(Messages.SUCCESS)) {
+			res.setMessage(Messages.LOGIN_SUCCESS);
+			res.setStatus(Messages.SUCCESS);
+			res.setStatusCode(HttpStatus.OK.toString());
+			return new ResponseEntity<ResponseDto>(res, HttpStatus.OK);
+		} else {
+			res.setMessage(Messages.FAILED);
+			res.setStatus(Messages.FAILED);
+			res.setStatusCode(HttpStatus.UNAUTHORIZED.toString());
+			return new ResponseEntity<ResponseDto>(res, HttpStatus.UNAUTHORIZED);
+		}
+	}
+
 }
